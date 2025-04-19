@@ -1,24 +1,35 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { characters, Character } from "./characters.ts";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+// Get the app container
+const app = document.querySelector<HTMLDivElement>('#app')!
+
+// Function to get a random character
+function getRandomCharacter(): Character {
+  const randomIndex = Math.floor(Math.random() * characters.length)
+  return characters[randomIndex]
+}
+
+// Function to display character
+function displayCharacter(character: Character): void {
+
+  app.innerHTML = `
+  <h1>Marvel Rivals Random Character Generator</h1>
+  <div class="character-card">
+    <h2>Your Random Character:</h2>
+    <div class="character">
+      <h3>${character.name}</h3>
+      <p>Role: ${character.role}</p>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
+    <button id='generate-btn'>Generate Another Character </button>
   </div>
 `
+  // add event listener to the generate button
+  document.querySelector<HTMLButtonElement>('#generate-btn')!.addEventListener('click', () => displayCharacter(getRandomCharacter()))
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+
+}
+
+displayCharacter(getRandomCharacter())
+
