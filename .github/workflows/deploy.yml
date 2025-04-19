@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    outputs: # Declare job outputs
+      deployment_needed: ${{ steps.deployment_check.outputs.deployment_needed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,7 +64,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: steps.deployment_check.outputs.deployment_needed == 'true' # Optional: only deploy if build output exists
+    if: needs.build.outputs.deployment_needed == 'true' # Use needs context to access output from build job
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
