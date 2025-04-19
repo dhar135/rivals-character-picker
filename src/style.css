@@ -130,3 +130,17 @@ button:focus-visible {
   border-radius: 4px;
   color: #999;
 }
+
+.filter-controls {
+  margin: 15px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+#role-filter {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: black;
+  font-size: 14px;
+}
