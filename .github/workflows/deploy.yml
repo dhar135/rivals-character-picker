@@ -33,15 +33,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # Specify pnpm version if needed, or let it auto-detect
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20 # Use a recent LTS version
           cache: 'pnpm' # Cache pnpm dependencies
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9 # Specify pnpm version if needed, or let it auto-detect
       - name: Install dependencies
         run: pnpm install
       - name: Build
