@@ -7,7 +7,7 @@ const app = document.querySelector<HTMLDivElement>('#app')!
 // Function to get a random character
 function getRandomCharacter(): Character {
   const randomIndex = Math.floor(Math.random() * characters.length)
-  return characters[0]
+  return characters[randomIndex]
 }
 
 // Function to display character
