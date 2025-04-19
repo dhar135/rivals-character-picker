@@ -29,7 +29,8 @@ function getRandomCharacter(role?: string): Character {
 // Get unique roles for the dropdown
 function getUniqueRoles(): string[] {
   const roles = characters.map(character => character.role)
-  return ["All", ...Array.from(new Set(roles))].sort()
+  const uniqueSortedRoles = Array.from(new Set(roles)).sort()
+  return ["All", ...uniqueSortedRoles]
 }
 
 // Function to display character
@@ -38,6 +39,9 @@ function displayCharacter(character: Character): void {
   const roleOptions = roles
     .map(role => `<option value="${role}">${role}</option>`)
     .join('')
+
+  // Store the current filter value before modifying the DOM
+  const currentFilter = document.querySelector<HTMLSelectElement>('#role-filter')?.value || "All"
 
   app.innerHTML = `
   <h1>Marvel Rivals Random Character Generator</h1>
@@ -69,12 +73,10 @@ function displayCharacter(character: Character): void {
     displayCharacter(getRandomCharacter(roleFilter))
   })
 
-  // Set the dropdown to match the current character's role if possible
+  // Restore the previously selected filter value
   const roleFilter = document.querySelector<HTMLSelectElement>('#role-filter')
   if (roleFilter) {
-    // Try to select the current character's role, or default to "All"
-    const optionExists = [...roleFilter.options].some(option => option.value === character.role)
-    roleFilter.value = optionExists ? character.role : "All"
+    roleFilter.value = currentFilter
   }
 }
 
