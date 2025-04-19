@@ -62,7 +62,7 @@ function displayCharacter(character: Character): void {
         </div>
       </div>
       <div class="character-image">
-        ${character.image ? `<img src=${character.image}>` : '<div class="no-image">No image available</div>'}
+        ${character.image ? `<img src="${character.image}">` : '<div class="no-image">No image available</div>'}
       </div>
     </div>
   </div>
