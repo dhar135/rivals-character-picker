@@ -18,6 +18,7 @@ export const characters: Character[] = [
         name: "Adam Warlock",
         role: ROLES.SPECIALIST,
         abilities: [],
+        image: "/character_images/adam_warlock.png"
     },
     {
         id: 2,
