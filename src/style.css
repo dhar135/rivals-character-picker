@@ -92,3 +92,41 @@ button:focus-visible {
   border-radius: 8px;
   padding: 2rem;
 }
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.character-info {
+  flex: 1;
+  text-align: center;
+}
+
+.character-image {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-image img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.no-image {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a2a;
+  border-radius: 4px;
+  color: #999;
+}
